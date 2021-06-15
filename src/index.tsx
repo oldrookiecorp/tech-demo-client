@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './index.scss';
+
 import reportWebVitals from './reportWebVitals';
+import GameListScene from './scenes/Games/GameListScene';
+import GameScene from './scenes/Games/GameScene';
+import LeaderBoardScene from './scenes/Games/LeaderBoardScene';
+import MainScene from './scenes/Main';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Switch>
+        <Route exact path="/" component={MainScene} />
+        <Route exact path="/games" component={GameListScene} />
+        <Route exact path="/game/:game_id" component={GameScene} />
+        <Route
+          exact
+          path="/game/leaderboard/:game_id"
+          component={LeaderBoardScene}
+        />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
