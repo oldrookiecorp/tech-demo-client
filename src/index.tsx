@@ -8,6 +8,7 @@ import GameListScene from './scenes/Games/GameListScene';
 import GameScene from './scenes/Games/GameScene';
 import LeaderBoardScene from './scenes/Games/LeaderBoardScene';
 import MainScene from './scenes/Main';
+import Footer from './components/Footer';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,6 +24,7 @@ ReactDOM.render(
         />
       </Switch>
     </Router>
+    <Footer />
   </React.StrictMode>,
   document.getElementById('root')
 );

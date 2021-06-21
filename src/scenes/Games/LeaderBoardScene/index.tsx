@@ -4,6 +4,8 @@ import styles from './LeaderBoardScene.module.scss';
 import cb from 'classnames/bind';
 import { GameIdMatchParams } from '../GameScene';
 import { Link } from 'react-router-dom';
+import Board from '../../../components/Board';
+import Button from '../../../components/Button';
 
 const cn = cb.bind(styles);
 
@@ -20,30 +22,33 @@ const LeaderBoardScene = ({
   ];
 
   return (
-    <div>
-      <h1 className={cn('title')}>#{game_id}게임 - 리더보드화면</h1>
-      <div>
-        <h2>LEADERBOARD</h2>
-        <Link to="/games">
-          <button>Close</button>
-        </Link>
+    <Board title={`#${game_id} LEADERBOARD`}>
+      <Link to="/games">
+        <Button className={cn('btn__close')} shape="circle">
+          X
+        </Button>
+      </Link>
 
-        <ol>
-          {user_score_items.map((item, idx) => {
-            let heart = '';
-            for (let i = 0; i < item.clear_heart; i++) {
-              heart += '❤️';
-            }
-
-            return (
-              <li className={cn(idx === 0 && 'rank_one')}>
-                {item.user_name} {item.score} [{item.clear_time} / {heart}]
-              </li>
-            );
-          })}
-        </ol>
-      </div>
-    </div>
+      <ol className={cn('rank__container')}>
+        {user_score_items.map((item, idx) => {
+          let heart = '';
+          for (let i = 0; i < item.clear_heart; i++) {
+            heart += '❤️';
+          }
+          return (
+            <li className={cn('rank--item', idx === 0 && 'rank--one')}>
+              {idx + 1}. {item.user_name} {item.score} [{item.clear_time} /{' '}
+              {heart}]
+            </li>
+          );
+        })}
+      </ol>
+      <Link to={`/game/${game_id}`}>
+        <Button className={cn('btn__again')} theme="yellow">
+          PLAY AGAIN
+        </Button>
+      </Link>
+    </Board>
   );
 };
 

@@ -1,7 +1,42 @@
-.title {
-  font-size: 2rem;
+.btn {
+  &__close {
+    padding: 5px 15px !important;
+    box-shadow: 0px 4px 0px 0px #ec002c !important;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+  &__again {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -50px;
+  }
 }
 
-.rank_one {
-  font-weight: bold;
+.rank {
+  &__container {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  &--item {
+    background-color: #fbdbbb;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px 1px #e2bf9e;
+    margin: 0 40px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #560000;
+    text-shadow: 0px 1px 3px #89505a;
+  }
+  &--one {
+    color: white;
+    background-color: #ffc107;
+    font-weight: bold;
+    margin: 0 30px;
+    margin-bottom: 10px;
+  }
 }

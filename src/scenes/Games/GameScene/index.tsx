@@ -13,9 +13,11 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
   const { game_id } = match.params;
 
   return (
-    <div>
-      <h1 className={cn('title')}>게임 화면 #{game_id}</h1>
-    </div>
+    //   <h1 className={cn('title')}>게임 화면 #{game_id}</h1>
+    <iframe
+      src="https://aframe.io/examples/showcase/anime-UI/"
+      className={cn('ifram__container')}
+    />
   );
 };
 

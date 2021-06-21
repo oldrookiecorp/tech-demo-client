@@ -1,3 +1,16 @@
-.title {
-  font-size: 2rem;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .title {
+    font-size: 4em;
+    color: white;
+    text-shadow: 1px 3px 4px #717171;
+  }
+  .btn {
+    &--play {
+      font-size: 2rem;
+    }
+  }
 }

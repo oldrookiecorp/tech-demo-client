@@ -1,3 +1,20 @@
-.title {
-  font-size: 2rem;
+.container {
+  height: 500px;
+}
+
+.swiper {
+  &__container {
+  }
+  &__item {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-color: #dfdfdf;
+    &__wrapper {
+      margin: 0 50px;
+      display: block;
+    }
+  }
 }
