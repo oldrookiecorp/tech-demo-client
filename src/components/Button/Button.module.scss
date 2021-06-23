@@ -1,6 +1,5 @@
 .container {
   z-index: 1;
-  padding: 0px 20px;
   border-radius: 20px;
   border: 0px;
   cursor: pointer;
@@ -8,6 +7,9 @@
   color: white;
   font-weight: bold;
   padding: 10px 20px;
+  &:active {
+    padding: 8px 18px;
+  }
 }
 
 .theme {
@@ -15,11 +17,21 @@
     background-color: #ff6380;
     box-shadow: 0px 8px 0px 0px #ec002c;
     text-shadow: 1px 3px 4px #da1f40;
+    border-top: 3px solid #f64465;
+    &:active {
+      background-color: #f64465;
+      box-shadow: 0px 4px 0px 0px #ec002c;
+    }
   }
   &--yellow {
     background-color: #ffc107;
     box-shadow: 0px 8px 0px 0px #e68000;
     text-shadow: 1px 3px 4px #e68000;
+    border-top: 3px solid #faac0c;
+    &:active {
+      background-color: #faac0b;
+      box-shadow: 0px 4px 0px 0px #e68000;
+    }
   }
 }
 

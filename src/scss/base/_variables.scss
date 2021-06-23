@@ -1,0 +1,33 @@
+// 컬러 관련 공통 변수
+
+$color-primary: #6200ee !default;
+$color-primary-variant: #3700b3 !default;
+$color-secondary: #03dac6 !default;
+$color-secondary-variant: #018786 !default;
+
+$color-background: #fff !default;
+$color-surface: #fff !default;
+$color-error: #b00020 !default;
+$color-success: #75e900 !default;
+$color-warning: #ff8d00 !default;
+$color-info: #2196f3 !default;
+$color-disabled: #9e9e9e !default;
+
+$color-on-primary: #fff !default;
+$color-on-secondary: #000 !default;
+$color-on-background: #000 !default;
+$color-on-surface: #000 !default;
+
+$color-on-error: #fff !default;
+$color-on-success: #000 !default;
+$color-on-warning: #000 !default;
+$color-on-info: #fff !default;
+$color-on-disabled: #000 !default;
+
+// 사이즈 관련
+
+$breakpoints: (
+  'large': 1200px,
+  'medium': 992px,
+  'small': 767px
+) !default;

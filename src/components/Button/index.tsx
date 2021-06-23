@@ -15,10 +15,14 @@ interface ButtonProps {
    * 버튼 곡선
    */
   shape?: 'circle';
+  /**
+   * 온클릭 이벤트
+   */
+  onClick?: () => void;
 }
 
 const Button = (props: ButtonProps) => {
-  const { theme = 'pink', shape, children, className } = props;
+  const { theme = 'pink', shape, children, className, onClick } = props;
 
   return (
     <button
@@ -28,6 +32,7 @@ const Button = (props: ButtonProps) => {
         `shape--${shape}`,
         className
       )}
+      onClick={onClick}
     >
       {children}
     </button>
