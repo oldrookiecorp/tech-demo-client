@@ -9,11 +9,20 @@
   z-index: 1;
   .title {
     font-size: 5em;
-    text-shadow: 1px 3px 4px #717171;
+    // text-shadow: 1px 3px 4px #717171;
+    filter: drop-shadow(1px 2px 2px #333);
+    -webkit-filter: drop-shadow(1px 2px 2px #333);
     color: #f1fba7;
+    margin-bottom: 30px;
+    background: -webkit-linear-gradient(#f1fba7, #b3bd67);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 30px;
     span {
       color: $color-primary;
+      background: -webkit-linear-gradient(#ff6380, #da2140);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
   .notice {
