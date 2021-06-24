@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './GameListScene.module.scss';
 import cb from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Board from '../../../components/Board';
 
 // import Swiper core and required modules
@@ -33,8 +33,8 @@ const GameListScene = () => {
         spaceBetween={50}
         slidesPerView={1}
         navigation
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
         className={cn('swiper__container')}
       >
         {game_items.map((item) => {

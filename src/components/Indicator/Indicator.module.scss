@@ -1,0 +1,38 @@
+@import '../../scss/global';
+
+.indicator {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  animation: spin 1s linear infinite;
+  z-index: 1;
+}
+
+.circle {
+  fill: none;
+  // stroke: rgba(255, 255, 255, 0.5);
+  stroke: $color-primary;
+  stroke-linecap: round;
+  stroke-width: 4;
+  animation: draw 3s ease-in-out infinite;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 20, 282.6;
+  }
+  50% {
+    stroke-dasharray: 200, 282.6;
+  }
+  100% {
+    stroke-dasharray: 20, 282.6;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

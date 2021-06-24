@@ -1,0 +1,17 @@
+@import '../../scss/global';
+
+.container {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: $color-surface;
+  min-width: 300px;
+  box-shadow: inset 0px 4px 0px 0px #e0dbd3;
+  border: none;
+  color: $color-on-surface;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+input:focus {
+  outline: none;
+}

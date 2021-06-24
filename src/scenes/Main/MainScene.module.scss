@@ -1,12 +1,25 @@
+@import '../../scss/global';
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 150px;
+  z-index: 1;
   .title {
-    font-size: 4em;
-    color: white;
+    font-size: 5em;
     text-shadow: 1px 3px 4px #717171;
+    color: #f1fba7;
+    margin-bottom: 30px;
+    span {
+      color: $color-primary;
+    }
+  }
+  .notice {
+    color: $color-error;
+    height: 50px;
+    text-shadow: 1px 2px 2px #a1a1a1;
   }
   .btn {
     &--play {
