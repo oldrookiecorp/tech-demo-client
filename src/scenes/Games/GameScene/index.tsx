@@ -20,21 +20,12 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
 
   const nickname = LibStore.get();
 
-  // useEffect(() => {
-  //   if (!loading) {
-  //     document.getElementById('tsparticles')?.remove();
-  //   }
-  // }, [loading]);
-
   const aframeLoad = () => {
     setLoading(false);
   };
 
-  const gameEnd = () => {
-    alert('Game Ended!');
-  };
-
-  window.addEventListener('message', (e) => {
+  // Iframe Callback Evt
+  const callback = (e: MessageEvent<any>) => {
     // 전달 된 데이터
     console.log(e.data.functionName);
 
@@ -45,16 +36,16 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
         alert(e.data.userIdx);
       }
     }
+  };
+
+  useEffect(() => {
+    window.addEventListener('message', callback);
+    return () => {
+      window.removeEventListener('message', callback);
+    };
   });
 
   const [visibility, setVisibility] = useState<boolean>(false);
-
-  useEffect(() => {
-    // const timeout = setTimeout(() => {
-    //   setVisibility(true);
-    // }, 5000);
-    // return () => clearTimeout(timeout);
-  }, []);
 
   return (
     <>
