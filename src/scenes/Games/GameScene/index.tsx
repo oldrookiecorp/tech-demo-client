@@ -24,13 +24,13 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     setLoading(false);
   };
 
-  // Iframe Callback Evt
+  // Iframe Callback Event
   const callback = (e: MessageEvent<any>) => {
     // 전달 된 데이터
     console.log(e.data.functionName);
 
     // 부모창의 함수 실행
-    if (e.data.functionName === 'gameEnd') {
+    if (e.data.functionName === 'gameClear') {
       setVisibility(true);
       if (e.data.userIdx) {
         alert(e.data.userIdx);
@@ -50,7 +50,6 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
   return (
     <>
       <iframe
-        // src={`https://aframe.io/examples/showcase/anime-UI?user=${nickname}`}
         src={`https://0.0.0.0:8888/Normal?user=${nickname}`}
         className={cn('ifram__container')}
         onLoad={aframeLoad}
