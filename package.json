@@ -55,17 +55,5 @@
     "babel-jest": "^27.0.5",
     "identity-obj-proxy": "^3.0.0",
     "jest-localstorage-mock": "^2.4.14"
-  },
-  "jest": {
-    "resetMocks": false,
-    "setupFiles": [
-      "jest-localstorage-mock"
-    ],
-    "moduleNameMapper": {
-      "\\.(css|scss|less)$": "identity-obj-proxy"
-    },
-    "transform": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__test__/fileTransformer.js"
-    }
   }
 }
