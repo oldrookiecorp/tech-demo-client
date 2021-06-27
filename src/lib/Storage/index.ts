@@ -3,7 +3,7 @@ const BEARER_TOKEN_KEY = 'API_SERVER_BEARER_TOKEN';
 /**
  * @description 유저 닉네임을 가져옵니다.
  */
- export const get = () => {
+export const get = () => {
   const token = localStorage.getItem(BEARER_TOKEN_KEY);
   return token;
 };
