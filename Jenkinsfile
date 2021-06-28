@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  environment {
+    HOME='.'
+  }
+
   stages {
     stage("Prepare") {
 
@@ -24,34 +28,35 @@ pipeline {
         }
       }
     }
-    // stage("Test") {
-    //   agent {
-    //     docker {
-    //       image "node:latest"
-    //     }
-    //   }
 
-    //   steps {
-    //     echo "Test"
+    stage("Test") {
+      agent {
+        docker {
+          image "node:latest"
+        }
+      }
 
-    //     dir('.') {
-    //       sh '''
-    //       npm install
-    //       npm run jest
-    //       '''
-    //     }
-    //   }
+      steps {
+        echo "Test"
 
-    //   post {
-    //     success {
-    //       echo 'Suceessfully Test Passed'
-    //     }
+        dir('.') {
+          sh '''
+          npm install
+          npm run jest
+          '''
+        }
+      }
 
-    //     failure{
-    //       echo 'Fail Test'
-    //     }
-    //   }
-    // }
+      post {
+        success {
+          echo 'Suceessfully Test Passed'
+        }
+
+        failure{
+          echo 'Fail Test'
+        }
+      }
+    }
 
     stage("Build") {
       agent any
