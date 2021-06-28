@@ -36,8 +36,8 @@ pipeline {
 
         dir('.') {
           sh '''
-          npm install
-          npx jest
+          sudo npm install
+          npm run jest
           '''
         }
       }
@@ -65,7 +65,7 @@ pipeline {
           '''
         }
       }
-      
+
 
       post {
         success {
