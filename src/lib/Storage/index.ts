@@ -1,28 +1,23 @@
-const BEARER_TOKEN_KEY = 'API_SERVER_BEARER_TOKEN';
+import { USER_KEYS, API_KEYS } from './Storage.type';
 
 /**
- * @description 유저 닉네임을 가져옵니다.
+ * 스토리지에서 사용하는 모든 키
  */
-export const get = () => {
-  const token = localStorage.getItem(BEARER_TOKEN_KEY);
-  return token;
-};
+export type StorageKey = keyof typeof USER_KEYS | keyof typeof API_KEYS;
 
-/**
- * @description 유저 닉네임을 설정합니다
- * @param nickname 저장될 닉네임 입니다. 공백일 수 없습니다. 삭제 시 clear 함수를 사용합니다
- */
-export const set = (nickname: string) => {
-  if (nickname.length <= 0) {
-    throw new Error('[Lib][nkickname] 닉네임은 공백일 수 없습니다');
+export const get = (key: StorageKey): string | null =>
+  localStorage.getItem(key);
+
+export const set = (key: StorageKey, value: string): void =>
+  localStorage.setItem(key, value);
+
+export const remove = (key: StorageKey): void => {
+  const _found = get(key);
+  if (_found) {
+    localStorage.removeItem(key);
   } else {
-    localStorage.setItem(BEARER_TOKEN_KEY, nickname);
+    throw new Error(`[STORAGE] '${key}'는 존재하지 않는 키 입니다.`);
   }
 };
 
-/**
- * @description 저장된 닉테임 정보를 삭제합니다
- */
-export const clear = () => {
-  localStorage.clear();
-};
+export const clear = () => localStorage.clear();

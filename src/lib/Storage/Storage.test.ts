@@ -1,5 +1,5 @@
 import 'jest-localstorage-mock';
-import * as libStorage from './__index';
+import * as libStorage from './index';
 
 describe('값 세팅과 가져오기', () => {
   const MOCK_KEY: libStorage.StorageKey = 'NICKNAME';

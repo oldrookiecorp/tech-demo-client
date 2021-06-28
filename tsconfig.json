@@ -25,6 +25,10 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "env": {
+    "es6": true,
+    "node": true,
+  },
   "paths": {
     "@/*": [
       "./*"
