@@ -32,7 +32,7 @@ pipeline {
     stage("Test") {
       agent {
         docker {
-          image "node:latest"
+          image "node:12"
         }
       }
 
