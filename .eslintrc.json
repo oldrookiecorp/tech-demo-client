@@ -17,7 +17,13 @@
     "ecmaVersion": 2017
   },
   "env": {
-    "es6": true
+    "es6": true,
+    "node": true
   },
+  "globals": {
+    "window" : true,
+    "MessageEvent" : true,
+    "localStorage" : true
+  } ,
   "extends": ["@react-native-community", "prettier"]
 }

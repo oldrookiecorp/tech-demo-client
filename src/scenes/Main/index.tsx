@@ -18,7 +18,7 @@ const MainScene = () => {
   const fn = {
     clickPlay: () => {
       if (nickname.length > 0) {
-        LibStore.set(nickname);
+        LibStore.set('NICKNAME', nickname);
         fn.redriect();
       } else {
         setNotice('닉네임을 입력해주세요.');

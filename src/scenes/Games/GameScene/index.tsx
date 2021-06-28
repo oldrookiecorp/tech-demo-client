@@ -27,7 +27,7 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   // 게임 정보 GET
-  const nickname = LibStore.get();
+  const nickname = LibStore.get('NICKNAME');
   const [data, setData] = useState<game | null>(null);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     if (e.data.functionName === 'gameClear') {
       setVisibility(true);
       if (e.data.userIdx) {
-        alert(e.data.userIdx);
+        window.alert(e.data.userIdx);
       }
     }
 

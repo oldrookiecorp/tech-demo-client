@@ -25,27 +25,31 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "env": {
+    "es6": true,
+    "node": true,
+  },
   "paths": {
     "@/*": [
       "./*"
     ],
     "@lib/*": [
-      "lib/*"
+      "./lib/*"
     ],
     "@components/*": [
-      "components/*"
+      "./components/*"
     ],
     "@scenes/*": [
-      "scenes/*"
+      "./scenes/*"
     ],
     // "@hooks/*": [
     //   "hooks/*"
     // ],
     "@scss/*":[
-      "scss/*"
+      "./scss/*"
     ]
   },
   "include": [
-    "src",
+    "src", 
   ]
 }
