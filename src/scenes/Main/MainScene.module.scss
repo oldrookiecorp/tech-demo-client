@@ -10,8 +10,8 @@
   .title {
     font-size: 5em;
     // text-shadow: 1px 3px 4px #717171;
-    filter: drop-shadow(1px 2px 2px #333);
-    -webkit-filter: drop-shadow(1px 2px 2px #333);
+    filter: drop-shadow(1px 3px 1px #686868);
+    -webkit-filter: drop-shadow(1px 3px 1px #686868);
     color: #f1fba7;
     margin-bottom: 30px;
     background: -webkit-linear-gradient(#f1fba7, #b3bd67);
@@ -30,9 +30,22 @@
     height: 50px;
     text-shadow: 1px 2px 2px #a1a1a1;
   }
+  .textInput {
+    filter: drop-shadow(1px 3px 1px #686868);
+    -webkit-filter: drop-shadow(1px 3px 1px #686868);
+  }
   .btn {
+    &--container {
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     &--play {
       font-size: 2rem;
+      border-top: none;
+      filter: drop-shadow(1px 3px 1px #686868);
+      -webkit-filter: drop-shadow(1px 3px 1px #686868);
     }
   }
 }

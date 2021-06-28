@@ -20,7 +20,8 @@
     box-shadow: 0px 8px 0px 0px $color-primary-variant;
     text-shadow: 1px 3px 4px $color-primary-variant;
     border-top: 3px solid #f64465;
-    &:active {
+    &:active,
+    &:hover {
       background-color: #f64465;
       box-shadow: 0px 4px 0px 0px $color-primary-variant;
     }
@@ -30,7 +31,8 @@
     box-shadow: 0px 8px 0px 0px $color-secondary-variant;
     text-shadow: 1px 3px 4px $color-secondary-variant;
     border-top: 3px solid #faac0c;
-    &:active {
+    &:active,
+    &:hover {
       background-color: #faac0b;
       box-shadow: 0px 4px 0px 0px $color-secondary-variant;
     }

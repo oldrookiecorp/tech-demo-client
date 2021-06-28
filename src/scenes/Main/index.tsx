@@ -43,6 +43,7 @@ const MainScene = () => {
       <div className={cn('notice')}>{notice}</div>
 
       <TextInput
+        className={cn('textInput')}
         placeholder="Nickname"
         value={nickname}
         onChange={(e) => setNickname(e.target.value)}
@@ -50,9 +51,11 @@ const MainScene = () => {
         onKeyPress={fn.handleKeyPress}
       />
 
-      <Button className={cn('btn--play')} onClick={() => fn.clickPlay()}>
-        PLAY
-      </Button>
+      <div className={cn('btn--container')}>
+        <Button className={cn('btn--play')} onClick={() => fn.clickPlay()}>
+          PLAY
+        </Button>
+      </div>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import cb from 'classnames/bind';
 import Indicator from '../../../components/Indicator';
 import Modal from '../../../components/Modal';
 import LeaderBoard from './LeaderBoard';
+import GameOver from './GameOver';
 
 import * as LibStore from '../../../lib/Storage';
 import { game } from '../GameListScene';
@@ -18,6 +19,10 @@ export interface GameIdMatchParams {
 
 const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
   const { game_id } = match.params;
+
+  // Modal
+  const [visibility, setVisibility] = useState<boolean>(false);
+  const [visibilityOver, setVisibilityOver] = useState<boolean>(false);
 
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -47,12 +52,17 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     // 전달 된 데이터
     console.log(e.data.functionName);
 
-    // 부모창의 함수 실행
+    // Game Clear
     if (e.data.functionName === 'gameClear') {
       setVisibility(true);
       if (e.data.userIdx) {
         alert(e.data.userIdx);
       }
+    }
+
+    // Game Over
+    if (e.data.functionName === 'gameOver') {
+      setVisibilityOver(true);
     }
   };
 
@@ -62,8 +72,6 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
       window.removeEventListener('message', callback);
     };
   });
-
-  const [visibility, setVisibility] = useState<boolean>(false);
 
   return (
     <>
@@ -84,6 +92,10 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
 
       <Modal isVisible={visibility}>
         <LeaderBoard id={game_id} />
+      </Modal>
+
+      <Modal isVisible={visibilityOver}>
+        <GameOver />
       </Modal>
     </>
   );
