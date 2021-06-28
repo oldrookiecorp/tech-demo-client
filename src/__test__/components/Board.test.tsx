@@ -26,6 +26,6 @@ describe('[Component] Board', () => {
         <p>{CHILDREN_TEXT}</p>
       </Board>
     );
-    getByText(CHILDREN_TEXT + 'add');
+    getByText(CHILDREN_TEXT);
   });
 });
