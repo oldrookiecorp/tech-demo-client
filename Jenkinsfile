@@ -86,6 +86,7 @@ pipeline {
 
         dir('.') {
           sh '''
+          docker rm -f front-deploy
           docker run -d --name front-deploy -p 80:80 front-deploy
           '''
         }
