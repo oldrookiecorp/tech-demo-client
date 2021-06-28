@@ -52,9 +52,12 @@
   },
   "devDependencies": {
     "@nteract/mockument": "^1.0.4",
+    "@react-native-community/eslint-config": "^3.0.0",
     "babel-jest": "^27.0.5",
+    "eslint": "^7.29.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-css-modules": "^2.1.0",
-    "jest-localstorage-mock": "^2.4.14"
+    "jest-localstorage-mock": "^2.4.14",
+    "prettier": "^2.3.2"
   }
 }
