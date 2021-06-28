@@ -5,6 +5,8 @@ WORKDIR /usr/app
 
 COPY . /usr/app
 
+ENV HOME='.'
+
 RUN npm install
 RUN npm run jest
 

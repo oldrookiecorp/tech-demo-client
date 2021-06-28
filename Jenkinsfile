@@ -26,39 +26,39 @@ pipeline {
       }
     }
 
-    stage("Test") {
-      agent {
-        docker {
-          image "node:latest"
-        }
-      }
-      
-      environment {
-        HOME='.'
-      }
+    // stage("Test") {
+    //   agent {
+    //     docker {
+    //       image "node:latest"
+    //     }
+    //   }
 
-      steps {
-        echo "Test"
+    //   environment {
+    //     HOME='.'
+    //   }
+
+    //   steps {
+    //     echo "Test"
 
 
-        dir('.') {
-          sh '''
-          npm install
-          npm run jest
-          '''
-        }
-      }
+    //     dir('.') {
+    //       sh '''
+    //       npm install
+    //       npm run jest
+    //       '''
+    //     }
+    //   }
 
-      post {
-        success {
-          echo 'Suceessfully Test Passed'
-        }
+    //   post {
+    //     success {
+    //       echo 'Suceessfully Test Passed'
+    //     }
 
-        failure{
-          echo 'Fail Test'
-        }
-      }
-    }
+    //     failure{
+    //       echo 'Fail Test'
+    //     }
+    //   }
+    // }
 
     stage("Build") {
       agent any
