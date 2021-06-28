@@ -1,9 +1,6 @@
 pipeline {
   agent any
 
-  environment {
-    HOME='.'
-  }
 
   stages {
     stage("Prepare") {
@@ -35,9 +32,14 @@ pipeline {
           image "node:latest"
         }
       }
+      
+      environment {
+        HOME='.'
+      }
 
       steps {
         echo "Test"
+
 
         dir('.') {
           sh '''
