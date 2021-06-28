@@ -21,7 +21,9 @@
     "node": true
   },
   "globals": {
-    "window" : true
+    "window" : true,
+    "MessageEvent" : true,
+    "localStorage" : true,
   } ,
   "extends": ["@react-native-community", "prettier"]
 }

@@ -4,3 +4,5 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 import 'jest-localstorage-mock';
+import 'react-testing-library/cleanup-after-each';
+import 'jest-dom/extend-expect';
