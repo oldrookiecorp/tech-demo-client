@@ -36,7 +36,7 @@ pipeline {
 
         dir('.') {
           sh '''
-          sudo npm install
+          npm install
           npm run jest
           '''
         }
