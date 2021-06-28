@@ -3,6 +3,7 @@ import styles from './GameListScene.module.scss';
 import cb from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import Board from '../../../components/Board';
+import Indicator from '../../../components/Indicator';
 import { getGames } from '../../../api/games';
 
 // import Swiper core and required modules
@@ -14,6 +15,7 @@ import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
+import { url } from 'inspector';
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -47,26 +49,36 @@ const GameListScene = () => {
 
   return (
     <Board title="STAGE LIST">
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        navigation
-        className={cn('swiper__container')}
-      >
-        {data &&
-          data._embedded.gameList.map((item) => {
+      {data ? (
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+          className={cn('swiper__container')}
+        >
+          {data._embedded.gameList.map((item) => {
             return (
               <SwiperSlide>
                 <Link
                   to={`/game/${item.id}`}
                   className={cn('swiper__item__wrapper')}
                 >
-                  <div className={cn('swiper__item')}>Stage{item.id}</div>
+                  <div
+                    className={cn('swiper__item')}
+                    style={{
+                      backgroundImage: `url('https://img.buro26.nl/600x300/ccc/999/600x300.png')`
+                    }}
+                  />
                 </Link>
               </SwiperSlide>
             );
           })}
-      </Swiper>
+        </Swiper>
+      ) : (
+        <div className={cn('indicator__container')}>
+          <Indicator />
+        </div>
+      )}
     </Board>
   );
 };
