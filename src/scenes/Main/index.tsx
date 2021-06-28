@@ -24,6 +24,11 @@ const MainScene = () => {
         setNotice('닉네임을 입력해주세요.');
       }
     },
+    handleKeyPress: (e: any) => {
+      if (e.key === 'Enter') {
+        fn.clickPlay();
+      }
+    },
     redriect: () => {
       history.push(`/games`);
     }
@@ -42,6 +47,7 @@ const MainScene = () => {
         value={nickname}
         onChange={(e) => setNickname(e.target.value)}
         autoFocus={true}
+        onKeyPress={fn.handleKeyPress}
       />
 
       <Button className={cn('btn--play')} onClick={() => fn.clickPlay()}>
