@@ -1,4 +1,4 @@
-FROM node:12 as builder
+FROM node:latest as builder
 
 # 작업 폴더를 만들고 npm 설치
 RUN apt-get update
