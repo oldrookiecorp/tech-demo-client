@@ -4,14 +4,13 @@ FROM node:latest as builder
 RUN apt-get update
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json /usr/src/app/package.json
 
-RUN npm install
+RUN yarn install
 
 # 소스를 작업폴더로 복사하고 앱 실행
 COPY . /usr/src/app
-RUN npm run build
+RUN yarn build
 
 FROM nginx:1.13.9-alpine
 # nginx의 기본 설정을 삭제하고 앱에서 설정한 파일을 복사
