@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] Board 스냅샷 테스트 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="title__container"
+    >
+      <h1
+        class="title"
+      >
+        __test__
+      </h1>
+    </div>
+    <div
+      class="wrapper"
+    >
+      <p>
+        BOARD COMPONENT
+      </p>
+    </div>
+  </div>
+</div>
+`;

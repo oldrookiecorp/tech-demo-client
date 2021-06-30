@@ -1,0 +1,115 @@
+@import './variables';
+
+/// 간결한 플렉스 박스 설정하기
+/// @access public
+@mixin flexbox($direction, $items, $content) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $items;
+  justify-content: $content;
+}
+
+/// 플렉스 박스 상세 설정하기
+/// @access public
+@mixin flexbox-detail(
+  $direction,
+  $justify-content,
+  $align-content,
+  $justify-items,
+  $align-items
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-content: $align-content;
+  justify-items: $justify-items;
+  align-items: $align-items;
+}
+
+/// 백그라운드 그라디언트
+/// @access public
+/// @param { string } $direction - 그라디언트 방향
+/// @param { Color[] } $list - 그라디언트 색 및 퍼센티지 리스트
+/// @example @include background-gradient(left, #fff 0%, #000 100%);
+@mixin background-gradient($direction, $list) {
+  background: -webkit-linear-gradient($direction, $list);
+  background: -moz-linear-gradient($direction, $list);
+  background: -o-linear-gradient($direction, $list);
+  background: linear-gradient($direction, $list);
+}
+
+/// 컬러 관련 자동 믹스인
+@mixin text-color {
+  &--primary {
+    color: $color-on-primary;
+  }
+  &--secondary {
+    color: $color-on-secondary;
+  }
+  &--background {
+    color: $color-on-background;
+  }
+  &--surface {
+    color: $color-on-surface;
+  }
+  &--error {
+    color: $color-on-error;
+  }
+  &--success {
+    color: $color-on-success;
+  }
+  &--warning {
+    color: $color-on-warning;
+  }
+  &--info {
+    color: $color-on-info;
+  }
+  &--disabled {
+    color: $color-on-disabled;
+  }
+}
+
+// 백그라운드 컬러 자동 생성용 믹스인
+@mixin bg-color {
+  &--primary {
+    background-color: $color-primary;
+  }
+  &--secondary {
+    background-color: $color-secondary;
+  }
+  &--background {
+    background-color: $color-background;
+  }
+  &--surface {
+    background-color: $color-surface;
+  }
+  &--error {
+    background-color: $color-error;
+  }
+  &--success {
+    background-color: $color-success;
+  }
+  &--warning {
+    background-color: $color-warning;
+  }
+  &--info {
+    background-color: $color-info;
+  }
+  &--disabled {
+    background-color: $color-disabled;
+  }
+}
+
+@mixin border-radius($top-left, $top-right, $bottom-left, $bottom-right) {
+  border-top-left-radius: $top-left;
+  border-top-right-radius: $top-right;
+  border-bottom-left-radius: $bottom-left;
+  border-bottom-right-radius: $bottom-right;
+}
+
+/*
+*  박스 쉐도우 만들기
+*/
+@mixin box-shadow($offsetX: 1px, $offsetY: 3px, $blur: 8px, $spread: 3px) {
+  box-shadow: $offsetX $offsetY $blur $spread rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] Footer 스냅샷 테스트 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    © 2021 A-Frame Demo Game
+  </div>
+</div>
+`;

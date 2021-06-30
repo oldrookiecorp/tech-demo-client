@@ -1,0 +1,39 @@
+.container {
+  height: 500px;
+}
+
+.swiper {
+  &__container {
+    .swiper-button-next {
+      left: 20px !important;
+      color: #ff6380;
+    }
+
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+      color: #ff6380;
+    }
+  }
+  &__item {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-color: #dfdfdf;
+    &__wrapper {
+      margin: 0 50px;
+      display: block;
+    }
+  }
+}
+
+.indicator {
+  &__container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+}

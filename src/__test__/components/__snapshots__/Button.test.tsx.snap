@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] Button 스냅샷 테스트 : default 1`] = `
+<div>
+  <button
+    class="container theme--pink shape--undefined"
+  />
+</div>
+`;

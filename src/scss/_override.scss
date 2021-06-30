@@ -1,0 +1,40 @@
+// 컬러 override
+$color-primary: #ff6380;
+$color-primary-variant: #da1f40;
+
+$color-secondary: #ffc107;
+$color-secondary-variant: #e68000;
+
+$color-surface: #fff9ec;
+$color-surface-variant: #ffb7aa;
+
+$color-background: #86dcc3;
+$color-background-variant: #7bd4b7;
+
+$color-success: #27ae60;
+$color-warning: #f00000;
+$color-disabled: #e5e5e5;
+
+// 텍스트 관련
+$color-on-primary: #fff;
+$color-on-secondary: #fff;
+$color-on-success: #fff;
+$color-on-warning: #fff;
+$color-on-disabled: #fff;
+$color-on-surface: #686868;
+
+// 사이즈 override
+$breakpoints: (
+  'large': 1440px,
+  'small': 575px
+);
+
+$window-sizes: (
+  'large': 1440px,
+  'small': 375px
+);
+
+$content-sizes: (
+  'large': 1036px,
+  'small': 375px
+);

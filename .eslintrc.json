@@ -1,0 +1,29 @@
+/*eslint-env es6*/
+{
+  "root": true,
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "react-native/no-inline-styles": 1,
+    "react-hooks/exhaustive-deps": 0,
+    // "linebreak-style": ["error", "windows"],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "globals": {
+    "window" : true,
+    "MessageEvent" : true,
+    "localStorage" : true
+  } ,
+  "extends": ["@react-native-community", "prettier"]
+}

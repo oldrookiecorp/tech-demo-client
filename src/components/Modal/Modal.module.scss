@@ -1,0 +1,50 @@
+@import 'src/scss/global';
+// @import '~rfs/scss';
+@import 'src/scss/components/modal';
+
+.container {
+  &--none {
+    display: none;
+    .wrapper {
+      opacity: 0;
+      transform: none;
+    }
+  }
+  &--fill {
+    width: 100vw;
+    height: 100vh;
+  }
+  &--fit {
+    width: fit-content;
+  }
+  &--visible {
+    @include flexbox(row, center, center);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $modal-container-z-index;
+    overflow: hidden;
+    outline: 0;
+    .wrapper {
+      position: relative;
+      top: 50px;
+      z-index: $modal-wrapper-z-index;
+      pointer-events: auto;
+      background-clip: padding-box;
+      outline: 0;
+      opacity: 1;
+      transition: transform 0.3s ease-out;
+      transform: translateY(-50px);
+    }
+    .backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1040;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000015;
+      opacity: 0.5;
+    }
+  }
+}
