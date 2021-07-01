@@ -29,32 +29,36 @@ pipeline {
       }
     }
 
-    // stage("Test") {
-    //   agent any
+    stage("Test") {
+      agent {
+        docker {
+          image 'node:latest'
+        }
+      }
 
 
-    //   steps {
-    //     echo "Test"
+      steps {
+        echo "Test"
 
 
-    //     dir('.') {
-    //       sh '''
-    //       docker build -f Dockerfile.test -t test .
-    //       docker rmi test
-    //       '''
-    //     }
-    //   }
+        dir('.') {
+          sh '''
+          npm install
+          npm run jest
+          '''
+        }
+      }
 
-    //   post {
-    //     success {
-    //       echo 'Suceessfully Test Passed'
-    //     }
+      post {
+        success {
+          echo 'Suceessfully Test Passed'
+        }
 
-    //     failure{
-    //       echo 'Fail Test'
-    //     }
-    //   }
-    // }
+        failure{
+          echo 'Fail Test'
+        }
+      }
+    }
 
     stage("Build") {
       agent any
