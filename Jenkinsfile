@@ -89,8 +89,7 @@ pipeline {
 
         dir('.') {
           sh '''
-          docker rm -f front-deploy
-          docker run -d --name front-deploy -p 8000:80 front-deploy
+          docker run -d --name front-deploy-{currentBuild.number} -p 8000:80 front-deploy
           '''
         }
       }
