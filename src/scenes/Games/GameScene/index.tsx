@@ -77,17 +77,12 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     <>
       {data && (
         <iframe
-          src={`${data.aframeUrl}?user=${nickname}`}
+          src={`${data.aframeUrl}?gameId=${game_id}&user=${nickname}`}
           className={cn('ifram__container')}
           onLoad={aframeLoad}
         />
       )}
 
-      {/* <iframe
-        src={`https://0.0.0.0:8888/Normal?user=${nickname}`}
-        className={cn('ifram__container')}
-        onLoad={aframeLoad}
-      /> */}
       {loading && <Indicator />}
 
       <Modal isVisible={visibility}>

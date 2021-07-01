@@ -24,6 +24,7 @@ const cn = cb.bind(styles);
 export interface game {
   id: string;
   aframeUrl: string;
+  thumbUrl: string;
 }
 interface gameList {
   _embedded: {
@@ -65,7 +66,7 @@ const GameListScene = () => {
                   <div
                     className={cn('swiper__item')}
                     style={{
-                      backgroundImage: `url('https://img.buro26.nl/600x300/ccc/999/600x300.png')`
+                      backgroundImage: `url('${item.thumbUrl})`
                     }}
                   />
                 </Link>
