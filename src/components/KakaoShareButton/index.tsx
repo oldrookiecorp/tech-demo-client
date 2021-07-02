@@ -23,7 +23,8 @@ const KakaoShareButton = (props: KakaoShareButtonProps) => {
       const kakao = window.Kakao;
       // 중복 initialization 방지
       if (!kakao.isInitialized()) {
-        kakao.init(process.env.REACT_APP_KAKAO_KEY);
+        // kakao.init(process.env.REACT_APP_KAKAO_KEY);
+        kakao.init('b57487d9cfe313600298880412b37273');
       }
 
       kakao.Link.createCustomButton({
