@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './KakaoShareButton.module.scss';
 import cb from 'classnames/bind';
 import kakaoIcon from './assets/kakao.png';
@@ -23,8 +23,7 @@ const KakaoShareButton = (props: KakaoShareButtonProps) => {
       const kakao = window.Kakao;
       // 중복 initialization 방지
       if (!kakao.isInitialized()) {
-        // kakao.init(process.env.REACT_APP_KAKAO_KEY);
-        kakao.init('b57487d9cfe313600298880412b37273');
+        kakao.init(process.env.REACT_APP_KAKAO_KEY);
       }
 
       kakao.Link.createCustomButton({
@@ -36,8 +35,7 @@ const KakaoShareButton = (props: KakaoShareButtonProps) => {
 
   return (
     <div className={cn('container')}>
-      {/* Kakao share button */}
-      <button id="kakao-link-btn" className={cn('btn')}>
+      <button id="kakao-link-btn">
         <img className={cn('icon')} src={kakaoIcon} alt="kakao-share-icon" />
       </button>
     </div>

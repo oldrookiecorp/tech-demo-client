@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './MainScene.module.scss';
 import cb from 'classnames/bind';
 import { useHistory } from 'react-router-dom';
@@ -8,12 +8,10 @@ import { useState } from 'react';
 
 import * as LibStore from '../../lib/Storage';
 import KakaoShareButton from '../../components/KakaoShareButton';
-import useScript from '../../hook/useScript';
 
 const cn = cb.bind(styles);
 
 const MainScene = () => {
-  useScript('https://developers.kakao.com/sdk/js/kakao.js');
   const [nickname, setNickname] = useState<string>('');
   const [notice, setNotice] = useState<string>('');
   let history = useHistory();
