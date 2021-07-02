@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { useEffect, useState } from 'react';
 import styles from './GameListScene.module.scss';
 import cb from 'classnames/bind';
@@ -56,9 +57,9 @@ const GameListScene = () => {
           navigation
           className={cn('swiper__container')}
         >
-          {data._embedded.gameList.map((item) => {
+          {data._embedded.gameList.map((item, idx) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={item.id}>
                 <Link
                   to={`/game/${item.id}`}
                   className={cn('swiper__item__wrapper')}

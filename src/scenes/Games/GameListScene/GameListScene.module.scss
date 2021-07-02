@@ -4,15 +4,6 @@
 
 .swiper {
   &__container {
-    .swiper-button-next {
-      left: 20px !important;
-      color: #ff6380;
-    }
-
-    .swiper-button-prev:after,
-    .swiper-button-next:after {
-      color: #ff6380;
-    }
   }
   &__item {
     display: flex;
@@ -21,6 +12,9 @@
     align-items: center;
     height: 300px;
     background-color: #dfdfdf;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: contain; */
     &__wrapper {
       margin: 0 50px;
       display: block;

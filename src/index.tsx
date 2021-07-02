@@ -6,7 +6,6 @@ import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import GameListScene from './scenes/Games/GameListScene';
 import GameScene from './scenes/Games/GameScene';
-import LeaderBoardScene from './scenes/Games/LeaderBoardScene';
 import MainScene from './scenes/Main';
 import Footer from './components/Footer';
 
@@ -17,15 +16,10 @@ ReactDOM.render(
         <Route exact path="/" component={MainScene} />
         <Route exact path="/games" component={GameListScene} />
         <Route exact path="/game/:game_id" component={GameScene} />
-        <Route
-          exact
-          path="/game/leaderboard/:game_id"
-          component={LeaderBoardScene}
-        />
       </Switch>
     </Router>
     <Footer />
-    <div id="tsparticles"></div>
+    <div id="tsparticles" />
   </React.StrictMode>,
   document.getElementById('root')
 );

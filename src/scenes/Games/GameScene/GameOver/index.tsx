@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import styles from './GameOver.module.scss';
 import cb from 'classnames/bind';
