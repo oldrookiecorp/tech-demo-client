@@ -9,12 +9,19 @@ import ScoreListItem, { SocreListType } from '../LeaderBoard/ScoreListItem';
 
 const cn = cb.bind(styles);
 
+export interface overData {
+  user_name: string;
+  cur_time: string;
+  cur_heart: string;
+}
+
 interface LeaderBoardProps {
   id?: string;
+  data: overData;
 }
 
 const GameOver = (props: LeaderBoardProps) => {
-  // const { id } = props;
+  const { data } = props;
   // const game_id = id;
   const history = useHistory();
 
@@ -33,7 +40,7 @@ const GameOver = (props: LeaderBoardProps) => {
           <td style={{ width: '30%' }}>HEART</td>
         </ScoreListItem>
         <ScoreListItem type={SocreListType.my}>
-          <td style={{ width: '40%' }}>UserName</td>
+          <td style={{ width: '40%' }}>{data.user_name}</td>
           <td style={{ width: '30%' }}>12:00</td>
           <td style={{ width: '30%' }}>❤️❤️🖤🖤🖤</td>
         </ScoreListItem>

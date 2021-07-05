@@ -6,7 +6,7 @@ import cb from 'classnames/bind';
 import Indicator from '../../../components/Indicator';
 import Modal from '../../../components/Modal';
 import LeaderBoard from './LeaderBoard';
-import GameOver from './GameOver';
+import GameOver, { overData } from './GameOver';
 
 import * as LibStore from '../../../lib/Storage';
 import { game } from '../GameListScene';
@@ -48,6 +48,12 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     setLoading(false);
   };
 
+  let overData: overData = {
+    user_name: '',
+    cur_time: '',
+    cur_heart: ''
+  };
+
   // Iframe Callback Event 체크
   const callback = (e: MessageEvent<any>) => {
     // 전달 된 데이터
@@ -63,6 +69,18 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
 
     // Game Over
     if (e.data.functionName === 'gameOver') {
+      e.data.cur_heart;
+      overData.user_name = e.data.user_name;
+      overData.cur_time = e.data.cur_time;
+      overData.cur_heart = e.data.cur_heart;
+
+      console.log(
+        'overData : ',
+        e.data.user_name,
+        e.data.cur_time,
+        e.data.cur_heart
+      );
+
       setVisibilityOver(true);
     }
   };
@@ -78,7 +96,8 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     <>
       {data && (
         <iframe
-          src={`${data.aframeUrl}?gameId=${game_id}&user=${nickname}`}
+          // src={`${data.aframeUrl}?gameId=${game_id}&user=${nickname}`}
+          src={`https://0.0.0.0:8888/normal?gameId=${game_id}&user=${nickname}`}
           className={cn('ifram__container')}
           onLoad={aframeLoad}
           allowFullScreen
@@ -92,7 +111,7 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
       </Modal>
 
       <Modal isVisible={visibilityOver}>
-        <GameOver />
+        <GameOver data={overData && overData} />
       </Modal>
     </>
   );
