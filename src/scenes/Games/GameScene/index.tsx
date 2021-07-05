@@ -81,10 +81,11 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
           src={`${data.aframeUrl}?gameId=${game_id}&user=${nickname}`}
           className={cn('ifram__container')}
           onLoad={aframeLoad}
+          allowFullScreen
         />
       )}
 
-      {loading && <Indicator />}
+      {loading && <Indicator className={cn('indicator--center')} />}
 
       <Modal isVisible={visibility}>
         <LeaderBoard id={game_id} />
