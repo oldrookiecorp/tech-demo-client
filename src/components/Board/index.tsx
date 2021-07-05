@@ -7,13 +7,14 @@ const cn = cb.bind(styles);
 interface BoardProps {
   children?: React.ReactNode;
   title?: string;
+  className?: string;
 }
 
 const Board = (props: BoardProps) => {
-  const { children, title = '' } = props;
+  const { children, title = '', className } = props;
 
   return (
-    <div className={cn('container')}>
+    <div className={cn('container', className)}>
       {title && (
         <div className={cn('title__container')}>
           <h1 className={cn('title')}>{title}</h1>
