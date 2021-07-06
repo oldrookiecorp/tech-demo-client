@@ -17,3 +17,14 @@ export const getGameDetail = async (id: any) => {
     return e;
   }
 };
+
+export const getClearRanks = async (id: any) => {
+  try {
+    const response = await axios.get(
+      `https://syu-clubs.com/api/clear-games/${id}`
+    );
+    return response.data;
+  } catch (e) {
+    return e;
+  }
+};
