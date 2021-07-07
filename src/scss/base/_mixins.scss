@@ -113,3 +113,31 @@
 @mixin box-shadow($offsetX: 1px, $offsetY: 3px, $blur: 8px, $spread: 3px) {
   box-shadow: $offsetX $offsetY $blur $spread rgba(0, 0, 0, 0.1);
 }
+
+/*
+*  스크린 Break Point
+*/
+$large: 1440px;
+$medium: 1024px;
+$small: 768px;
+
+// Pc
+@mixin media-pc-large {
+  @media screen and (min-width: $small + 1) and (max-width: $large) {
+    @content;
+  }
+}
+
+// Tablet
+@mixin media-pc {
+  @media screen and (min-width: $small + 1) {
+    @content;
+  }
+}
+
+// Mobile
+@mixin media-mobile {
+  @media screen and (max-width: $small) {
+    @content;
+  }
+}

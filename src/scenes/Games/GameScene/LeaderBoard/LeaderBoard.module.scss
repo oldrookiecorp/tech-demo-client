@@ -1,5 +1,10 @@
+@import '../../../../scss/global';
+
 .container {
-  width: 100%;
+  width: 700px;
+  @include media-mobile {
+    width: 70%;
+  }
 }
 
 .btn {

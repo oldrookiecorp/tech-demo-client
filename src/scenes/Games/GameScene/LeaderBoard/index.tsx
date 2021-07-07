@@ -1,44 +1,55 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './LeaderBoard.module.scss';
 import cb from 'classnames/bind';
 import { Link, useHistory } from 'react-router-dom';
 import Board from '../../../../components/Board';
 import Button from '../../../../components/Button';
 import ScoreListItem, { SocreListType } from './ScoreListItem';
+import { scoreTimeParser } from '../../../../lib/scoreTimeParser';
+import { scoreHeartParser } from '../../../../lib/scoreHeartParser';
 
 const cn = cb.bind(styles);
 
+interface stageData {
+  heartCnt: number;
+}
+
+export interface clearListItem {
+  id: number;
+  clearHeart: number;
+  clearTime: number;
+  score: number;
+  username: string;
+  stage: stageData;
+}
+
 interface LeaderBoardProps {
   id: string;
+  data: clearListItem[] | null;
+  targetId: number;
 }
 
 const LeaderBoard = (props: LeaderBoardProps) => {
-  const { id } = props;
+  const { id, data, targetId } = props;
   const game_id = id;
   const history = useHistory();
+  const targetRef = useRef(null);
 
-  const user_score_items = [
-    { user_name: 'user_133', score: 14000, clear_time: '1:00', clear_heart: 5 },
-    {
-      user_name: 'user_2132213123232',
-      score: 3300,
-      clear_time: '1:00',
-      clear_heart: 4
-    },
-    { user_name: 'user_3223', score: 2000, clear_time: '1:00', clear_heart: 3 },
-    { user_name: 'user_41', score: 1000, clear_time: '1:00', clear_heart: 2 },
-    { user_name: 'user_3223', score: 2000, clear_time: '1:00', clear_heart: 3 },
-    { user_name: 'user_41', score: 1000, clear_time: '1:00', clear_heart: 2 },
-    { user_name: 'user_3223', score: 2000, clear_time: '1:00', clear_heart: 3 },
-    { user_name: 'user_41', score: 1000, clear_time: '1:00', clear_heart: 2 },
-    { user_name: 'user_3223', score: 2000, clear_time: '1:00', clear_heart: 3 },
-    { user_name: 'user_41', score: 1000, clear_time: '1:00', clear_heart: 2 },
-    { user_name: 'user_3223', score: 2000, clear_time: '1:00', clear_heart: 3 },
-    { user_name: 'user_41', score: 1000, clear_time: '1:00', clear_heart: 2 },
-    { user_name: 'user_3223', score: 2000, clear_time: '1:00', clear_heart: 3 },
-    { user_name: 'user_41', score: 1000, clear_time: '1:00', clear_heart: 2 }
-  ];
+  useEffect(() => {
+    if (data) {
+      data.map((item) => {
+        console.log('rank_data in board : ', data);
+        console.log('targetId in board : ', targetId);
+      });
+    }
+  }, [data, targetId]);
+
+  useEffect(() => {
+    if (targetRef.current) {
+      console.log(targetRef.current);
+    }
+  }, [targetRef]);
 
   return (
     <Board title={`LEADERBOARD`} className={cn('container')}>
@@ -49,32 +60,37 @@ const LeaderBoard = (props: LeaderBoardProps) => {
       </Link>
 
       <table className={cn('rank__container')}>
-        {user_score_items.map((item, idx) => {
-          let heart = '';
-          for (let i = 0; i < item.clear_heart; i++) {
-            heart += '❤️';
-          }
-
-          for (let i = 0; i < 5 - item.clear_heart; i++) {
-            heart += '🖤';
-          }
-
-          return (
-            <ScoreListItem
-              type={
-                idx === 0 ? SocreListType.first : idx === 3 && SocreListType.my
-              }
-            >
-              <th style={{ width: '10%' }}>{idx + 1}.</th>
-              <td style={{ width: '30%' }}>{item.user_name}</td>
-              <td style={{ width: '10%' }}>{item.clear_time}</td>
-              <td style={{ width: '35%' }}>{heart}</td>
-              <td style={{ width: '15%' }}>{item.score}</td>
-            </ScoreListItem>
-          );
-        })}
+        {data &&
+          data.map((item, idx) => {
+            return (
+              <ScoreListItem
+                type={
+                  idx === 0
+                    ? item.id === targetId
+                      ? SocreListType.firstMy
+                      : SocreListType.first
+                    : item.id === targetId && SocreListType.my
+                }
+              >
+                <th
+                  style={{ width: '10%' }}
+                  ref={item.id === targetId ? targetRef : null}
+                >
+                  {idx + 1}.
+                </th>
+                <td style={{ width: '30%' }}>{item.username}</td>
+                <td style={{ width: '15%' }}>
+                  {scoreTimeParser(item.clearTime)}
+                </td>
+                <td style={{ width: '30%' }}>
+                  {scoreHeartParser(item.clearHeart, item.stage.heartCnt)}
+                </td>
+                <td style={{ width: '15%' }}>{item.score}</td>
+              </ScoreListItem>
+            );
+          })}
       </table>
-      {/* <Link to={`/game/${game_id}`}> */}
+
       <Button
         className={cn('btn__again')}
         theme="yellow"

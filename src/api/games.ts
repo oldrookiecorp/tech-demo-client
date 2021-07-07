@@ -21,7 +21,7 @@ export const getGameDetail = async (id: any) => {
 export const getClearRanks = async (id: any) => {
   try {
     const response = await axios.get(
-      `https://syu-clubs.com/api/clear-games/${id}`
+      `https://syu-clubs.com/api/clear-games?stage=${id}&size=99999`
     );
     return response.data;
   } catch (e) {

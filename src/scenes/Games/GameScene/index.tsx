@@ -5,12 +5,15 @@ import styles from './GameScene.module.scss';
 import cb from 'classnames/bind';
 import Indicator from '../../../components/Indicator';
 import Modal from '../../../components/Modal';
-import LeaderBoard from './LeaderBoard';
+import Board from '../../../components/Board';
+import Button from '../../../components/Button';
+import LeaderBoard, { clearListItem } from './LeaderBoard';
 import GameOver, { overData } from './GameOver';
 
 import * as LibStore from '../../../lib/Storage';
 import { game } from '../GameListScene';
 import { getClearRanks, getGameDetail } from '../../../api/games';
+import { number } from 'yargs';
 
 const cn = cb.bind(styles);
 
@@ -24,6 +27,7 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
   // Modal
   const [visibility, setVisibility] = useState<boolean>(false);
   const [visibilityOver, setVisibilityOver] = useState<boolean>(false);
+  const [visibilityRule, setVisibilityRule] = useState<boolean>(true);
 
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -48,16 +52,9 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     setLoading(false);
   };
 
-  // const overData = useMemo(() => {
-  //   let overDataObject: overData = {
-  //     user_name: '',
-  //     remain_obj: '',
-  //     cur_time: '',
-  //     cur_heart: ''
-  //   };
+  const [rankData, setRankData] = useState<clearListItem[] | null>(null);
 
-  //   return overDataObject;
-  // }, [data]);
+  const [targetRank, setTargetRank] = useState<number>(0);
 
   const [overData, setOverData] = useState<overData>({
     user_name: '',
@@ -69,26 +66,23 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     total_heart: 0
   });
 
-  const [rankData, setRankData] = useState<any>(null);
-  const [targetRank, setTargetRank] = useState<number>(0);
-
   // Iframe Callback Event 체크
-  const callback = (e: MessageEvent<any>) => {
+  const callback = async (e: MessageEvent<any>) => {
     // 전달 된 데이터
     console.log(e.data.functionName);
 
     // Game Clear
     if (e.data.functionName === 'gameClear') {
       if (e.data.data) {
-        console.log(e.data.data.id);
+        // console.log('targetId : ', e.data.data.id);
         setTargetRank(e.data.data.id);
-        getClearRanks(game_id).then((response) => {
+        await getClearRanks(game_id).then((response) => {
           if (typeof response.message === 'string') {
             alert(response.message);
-            console.log(response);
+            // console.log(response);
           } else {
-            setRankData(response);
-            console.log(response);
+            setRankData(response._embedded.clearGameList);
+            console.log('rankData : ', response._embedded.clearGameList);
           }
         });
       }
@@ -117,6 +111,10 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     };
   });
 
+  useEffect(() => {
+    console.log('rankData : ', rankData);
+  }, [rankData]);
+
   return (
     <>
       {data && (
@@ -131,8 +129,20 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
 
       {loading && <Indicator className={cn('indicator--center')} />}
 
+      <Modal isVisible={visibilityRule}>
+        <Board>
+          <Button shape="circle" onClick={() => setVisibilityRule(false)}>
+            X
+          </Button>
+        </Board>
+      </Modal>
+
       <Modal isVisible={visibility}>
-        <LeaderBoard id={game_id} />
+        <LeaderBoard
+          id={game_id}
+          data={rankData && rankData}
+          targetId={targetRank && targetRank}
+        />
       </Modal>
 
       <Modal isVisible={visibilityOver}>
