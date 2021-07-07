@@ -4,7 +4,8 @@
 // learn more: https://github.com/testing-library/jest-dom
 import 'jest-localstorage-mock';
 import '@testing-library/jest-dom';
-import '@testing-library/jest-dom/extend-expect';
+// import '@testing-library/jest-dom/extend-expect';
+// require('@testing-library/jest-dom/extend-expect');
 
 module.exports = async () => {
   function storageMock() {
@@ -27,6 +28,7 @@ module.exports = async () => {
         const keys = Object.keys(storage);
         return keys[i] || null;
       },
+      // eslint-disable-next-line no-undef
       clear: jest.fn()
     };
   }
