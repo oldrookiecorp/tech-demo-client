@@ -15,7 +15,9 @@
     td,
     th {
       padding: 10px;
-      overflow: hidden;
+      // overflow: hidden;
+      display: flex;
+      align-items: center;
     }
   }
   &--one {

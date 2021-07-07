@@ -65,7 +65,7 @@ const Modal = (props: ModalProps) => {
         <div
           className={cn('backdrop', backdropClassName)}
           onClick={onClickBackdrop}
-        ></div>
+        />
       )}
     </div>
   );

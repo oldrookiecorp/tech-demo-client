@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import styles from './ScoreListItem.module.scss';
 import cb from 'classnames/bind';

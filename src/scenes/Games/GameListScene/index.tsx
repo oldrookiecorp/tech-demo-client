@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { useEffect, useState } from 'react';
 import styles from './GameListScene.module.scss';
 import cb from 'classnames/bind';
@@ -24,6 +25,7 @@ const cn = cb.bind(styles);
 export interface game {
   id: string;
   aframeUrl: string;
+  thumbUrl: string;
 }
 interface gameList {
   _embedded: {
@@ -55,9 +57,9 @@ const GameListScene = () => {
           navigation
           className={cn('swiper__container')}
         >
-          {data._embedded.gameList.map((item) => {
+          {data._embedded.gameList.map((item, idx) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={item.id}>
                 <Link
                   to={`/game/${item.id}`}
                   className={cn('swiper__item__wrapper')}
@@ -65,7 +67,7 @@ const GameListScene = () => {
                   <div
                     className={cn('swiper__item')}
                     style={{
-                      backgroundImage: `url('https://img.buro26.nl/600x300/ccc/999/600x300.png')`
+                      backgroundImage: `url('${item.thumbUrl})`
                     }}
                   />
                 </Link>

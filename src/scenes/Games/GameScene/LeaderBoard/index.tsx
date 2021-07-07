@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import styles from './LeaderBoard.module.scss';
 import cb from 'classnames/bind';
@@ -40,7 +41,7 @@ const LeaderBoard = (props: LeaderBoardProps) => {
   ];
 
   return (
-    <Board title={`LEADERBOARD`}>
+    <Board title={`LEADERBOARD`} className={cn('container')}>
       <Link to="/games">
         <Button className={cn('btn__close')} shape="circle">
           X

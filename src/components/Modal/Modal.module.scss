@@ -35,6 +35,9 @@
       opacity: 1;
       transition: transform 0.3s ease-out;
       transform: translateY(-50px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .backdrop {
       position: fixed;
