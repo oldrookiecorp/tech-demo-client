@@ -75,12 +75,10 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     // Game Clear
     if (e.data.functionName === 'gameClear') {
       if (e.data.data) {
-        // console.log('targetId : ', e.data.data.id);
         setTargetRank(e.data.data.id);
         await getClearRanks(game_id).then((response) => {
           if (typeof response.message === 'string') {
             alert(response.message);
-            // console.log(response);
           } else {
             setRankData(response._embedded.clearGameList);
             console.log('rankData : ', response._embedded.clearGameList);
@@ -121,18 +119,19 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
       {data && (
         <iframe
           src={`${data.aframeUrl}?gameId=${game_id}&user=${nickname}`}
-          // src={`https://0.0.0.0:8888?gameId=${game_id}&user=${nickname}`}
           className={cn('ifram__container')}
           onLoad={aframeLoad}
           allowFullScreen
         />
       )}
 
-      {loading && <Indicator className={cn('indicator--center')} />}
-
-      <Modal isVisible={visibilityRule}>
-        <GameRule onClickCloseBtn={() => setVisibilityRule(false)} />
-      </Modal>
+      {loading ? (
+        <Indicator className={cn('indicator--center')} />
+      ) : (
+        <Modal isVisible={visibilityRule}>
+          <GameRule onClickCloseBtn={() => setVisibilityRule(false)} />
+        </Modal>
+      )}
 
       <Modal isVisible={visibility}>
         <LeaderBoard

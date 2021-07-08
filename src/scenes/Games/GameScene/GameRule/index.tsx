@@ -2,12 +2,8 @@
 import React from 'react';
 import styles from './GameRule.module.scss';
 import cb from 'classnames/bind';
-import { Link, useHistory } from 'react-router-dom';
 import Board from '../../../../components/Board';
 import Button from '../../../../components/Button';
-import ScoreListItem, { SocreListType } from '../LeaderBoard/ScoreListItem';
-import { scoreHeartParser } from '../../../../lib/scoreHeartParser';
-import { scoreTimeParser } from '../../../../lib/scoreTimeParser';
 
 const cn = cb.bind(styles);
 interface GameRuleProps {
