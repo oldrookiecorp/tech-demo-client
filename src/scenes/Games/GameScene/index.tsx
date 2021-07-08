@@ -14,6 +14,7 @@ import * as LibStore from '../../../lib/Storage';
 import { game } from '../GameListScene';
 import { getClearRanks, getGameDetail } from '../../../api/games';
 import { number } from 'yargs';
+import GameRule from './GameRule';
 
 const cn = cb.bind(styles);
 
@@ -130,11 +131,7 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
       {loading && <Indicator className={cn('indicator--center')} />}
 
       <Modal isVisible={visibilityRule}>
-        <Board>
-          <Button shape="circle" onClick={() => setVisibilityRule(false)}>
-            X
-          </Button>
-        </Board>
+        <GameRule onClickCloseBtn={() => setVisibilityRule(false)} />
       </Modal>
 
       <Modal isVisible={visibility}>

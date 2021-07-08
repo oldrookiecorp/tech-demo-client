@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './LeaderBoard.module.scss';
 import cb from 'classnames/bind';
 import { Link, useHistory } from 'react-router-dom';
-import Board from '../../../../components/Board';
+import Board, { IScrollTarget } from '../../../../components/Board';
 import Button from '../../../../components/Button';
 import ScoreListItem, { SocreListType } from './ScoreListItem';
 import { scoreTimeParser } from '../../../../lib/scoreTimeParser';
@@ -34,25 +34,25 @@ const LeaderBoard = (props: LeaderBoardProps) => {
   const { id, data, targetId } = props;
   const game_id = id;
   const history = useHistory();
-  const targetRef = useRef(null);
+  const targetRef = useRef<any>();
 
-  useEffect(() => {
-    if (data) {
-      data.map((item) => {
-        console.log('rank_data in board : ', data);
-        console.log('targetId in board : ', targetId);
-      });
-    }
-  }, [data, targetId]);
+  const [targetInfo, setTargetInfo] = useState<IScrollTarget>();
 
   useEffect(() => {
     if (targetRef.current) {
-      console.log(targetRef.current);
+      setTargetInfo({
+        top: targetRef.current.offsetTop,
+        height: targetRef.current.offsetHeight
+      });
     }
   }, [targetRef]);
 
   return (
-    <Board title={`LEADERBOARD`} className={cn('container')}>
+    <Board
+      title={`LEADERBOARD`}
+      className={cn('container')}
+      scrollTarget={targetInfo && targetInfo}
+    >
       <Link to="/games">
         <Button className={cn('btn__close')} shape="circle">
           X
@@ -63,30 +63,27 @@ const LeaderBoard = (props: LeaderBoardProps) => {
         {data &&
           data.map((item, idx) => {
             return (
-              <ScoreListItem
-                type={
-                  idx === 0
-                    ? item.id === targetId
-                      ? SocreListType.firstMy
-                      : SocreListType.first
-                    : item.id === targetId && SocreListType.my
-                }
-              >
-                <th
-                  style={{ width: '10%' }}
-                  ref={item.id === targetId ? targetRef : null}
+              <div ref={item.id === targetId ? targetRef : null}>
+                <ScoreListItem
+                  type={
+                    idx === 0
+                      ? item.id === targetId
+                        ? SocreListType.firstMy
+                        : SocreListType.first
+                      : item.id === targetId && SocreListType.my
+                  }
                 >
-                  {idx + 1}.
-                </th>
-                <td style={{ width: '30%' }}>{item.username}</td>
-                <td style={{ width: '15%' }}>
-                  {scoreTimeParser(item.clearTime)}
-                </td>
-                <td style={{ width: '30%' }}>
-                  {scoreHeartParser(item.clearHeart, item.stage.heartCnt)}
-                </td>
-                <td style={{ width: '15%' }}>{item.score}</td>
-              </ScoreListItem>
+                  <th style={{ width: '10%' }}>{idx + 1}.</th>
+                  <td style={{ width: '30%' }}>{item.username}</td>
+                  <td style={{ width: '15%' }}>
+                    {scoreTimeParser(item.clearTime)}
+                  </td>
+                  <td style={{ width: '30%' }}>
+                    {scoreHeartParser(item.clearHeart, item.stage.heartCnt)}
+                  </td>
+                  <td style={{ width: '15%' }}>{item.score}</td>
+                </ScoreListItem>
+              </div>
             );
           })}
       </table>

@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-import React, { useRef } from 'react';
+import React from 'react';
 import styles from './ScoreListItem.module.scss';
 import cb from 'classnames/bind';
 
@@ -19,7 +19,6 @@ interface ButtonProps {
 
 const ScoreListItem = (props: ButtonProps) => {
   const { type, children, className } = props;
-  const targetRef = useRef(null);
 
   return (
     <tr
