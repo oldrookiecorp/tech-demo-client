@@ -123,14 +123,12 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
           className={cn('ifram__container')}
           onLoad={aframeLoad}
           allowFullScreen
-          // mozAllowFullscreen="true"
-          // webkitallowfullscreen="true"
-          // allowvr="yes"
+          data-mozAllowFullscreen="true"
+          data-webkitallowfullscreen="true"
+          data-allowvr="yes"
           allow="vr; xr; accelerometer; magnetometer; gyroscope; webvr;webxr;"
         />
       )}
-
-      <iframe id="ytplayer" data-type="text/html" frameBorder="0" />
 
       {loading ? (
         <Indicator className={cn('indicator--center')} />
