@@ -73,7 +73,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run jest"
+      "pre-push": "yarn run jest"
     }
   }
 }
