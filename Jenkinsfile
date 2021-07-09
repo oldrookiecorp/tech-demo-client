@@ -118,6 +118,7 @@ pipeline {
           mail  to: 'sh.bae@oldrookiecorp.com',
                 subject: "${BUILD_TAG} Fail!",
                 body: "${BUILD_TAG} Fail to Deployed! git commit: ${GIT_COMMIT} git url: ${GIT_URL} more information about this build visit ${BUILD_URL}"
+
           mail  to: 'dev.gihong2012@gmail.com',
                 subject: "${BUILD_TAG}",
                 body: "${BUILD_TAG} Fail to Deployed! git commit: ${GIT_COMMIT} git url: ${GIT_URL} more information about this build visit ${BUILD_URL}"
