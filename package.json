@@ -1,6 +1,6 @@
 {
   "name": "demo_game_web_client",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@react-native-community/eslint-config": "^3.0.0",
