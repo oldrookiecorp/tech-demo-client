@@ -122,6 +122,11 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
           className={cn('ifram__container')}
           onLoad={aframeLoad}
           allowFullScreen
+          mozallowfullscreen="true"
+          webkitallowfullscreen="true"
+          frameborder="0"
+          allowvr="yes"
+          allow="vr; xr; accelerometer; magnetometer; gyroscope; webvr;webxr;"
         />
       )}
 
