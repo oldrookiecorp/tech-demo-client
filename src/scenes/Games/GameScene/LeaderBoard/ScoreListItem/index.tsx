@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import styles from './ScoreListItem.module.scss';
 import cb from 'classnames/bind';
@@ -6,7 +7,8 @@ const cn = cb.bind(styles);
 
 export enum SocreListType {
   first = 'first',
-  my = 'my'
+  my = 'my',
+  firstMy = 'firstMy'
 }
 
 interface ButtonProps {
@@ -22,8 +24,10 @@ const ScoreListItem = (props: ButtonProps) => {
     <tr
       className={cn(
         'rank--item',
-        type === SocreListType.first && 'rank--one',
+        (type === SocreListType.first || type === SocreListType.firstMy) &&
+          'rank--one',
         type === SocreListType.my && 'rank--my',
+        type === SocreListType.firstMy && 'rank--one--my',
         className
       )}
     >

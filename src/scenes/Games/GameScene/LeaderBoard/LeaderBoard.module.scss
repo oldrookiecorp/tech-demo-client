@@ -1,3 +1,12 @@
+@import '../../../../scss/global';
+
+.container {
+  width: 700px;
+  @include media-mobile {
+    width: 70%;
+  }
+}
+
 .btn {
   &__close {
     padding: 5px 15px !important;

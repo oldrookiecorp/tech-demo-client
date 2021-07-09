@@ -1,6 +1,9 @@
 pipeline {
   agent any
 
+  environment {
+    HOME = '.'
+  }
 
   stages {
     stage("Prepare") {
@@ -26,32 +29,36 @@ pipeline {
       }
     }
 
-    // stage("Test") {
-    //   agent any
+    stage("Test") {
+      agent {
+        docker {
+          image 'node:latest'
+        }
+      }
 
 
-    //   steps {
-    //     echo "Test"
+      steps {
+        echo "Test"
 
 
-    //     dir('.') {
-    //       sh '''
-    //       docker build -f Dockerfile.test -t test .
-    //       docker rmi test
-    //       '''
-    //     }
-    //   }
+        dir('.') {
+          sh '''
+          npm install
+          npm run jest
+          '''
+        }
+      }
 
-    //   post {
-    //     success {
-    //       echo 'Suceessfully Test Passed'
-    //     }
+      post {
+        success {
+          echo 'Suceessfully Test Passed'
+        }
 
-    //     failure{
-    //       echo 'Fail Test'
-    //     }
-    //   }
-    // }
+        failure{
+          echo 'Fail Test'
+        }
+      }
+    }
 
     stage("Build") {
       agent any
@@ -87,8 +94,33 @@ pipeline {
         dir('.') {
           sh '''
           docker rm -f front-deploy
-          docker run -d --name front-deploy -p 80:80 front-deploy
+          docker run -d --name front-deploy -p 8000:80 front-deploy
           '''
+        }
+      }
+
+      post {
+        success {
+          echo 'Successfully Deployed'
+
+          mail  to: 'sh.bae@oldrookiecorp.com',
+                subject: "${BUILD_TAG} Success!",
+                body: "${BUILD_TAG} Successfully Deployed! git commit: ${GIT_COMMIT} git url: ${GIT_URL} more information about this build visit ${BUILD_URL}"
+
+          mail  to: 'dev.gihong2012@gmail.com',
+                subject: "${BUILD_TAG}",
+                body: "${BUILD_TAG} Successfully Deployed! git commit: ${GIT_COMMIT} git url: ${GIT_URL} more information about this build visit ${BUILD_URL}"
+        }
+
+        failure {
+          echo 'Fail to Deployed'
+
+          mail  to: 'sh.bae@oldrookiecorp.com',
+                subject: "${BUILD_TAG} Fail!",
+                body: "${BUILD_TAG} Fail to Deployed! git commit: ${GIT_COMMIT} git url: ${GIT_URL} more information about this build visit ${BUILD_URL}"
+          mail  to: 'dev.gihong2012@gmail.com',
+                subject: "${BUILD_TAG}",
+                body: "${BUILD_TAG} Fail to Deployed! git commit: ${GIT_COMMIT} git url: ${GIT_URL} more information about this build visit ${BUILD_URL}"
         }
       }
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './MainScene.module.scss';
 import cb from 'classnames/bind';
 import { useHistory } from 'react-router-dom';
@@ -7,6 +7,7 @@ import TextInput from '../../components/TextInput';
 import { useState } from 'react';
 
 import * as LibStore from '../../lib/Storage';
+import KakaoShareButton from '../../components/KakaoShareButton';
 
 const cn = cb.bind(styles);
 
@@ -56,6 +57,8 @@ const MainScene = () => {
           PLAY
         </Button>
       </div>
+
+      <KakaoShareButton />
     </div>
   );
 };

@@ -1,5 +1,9 @@
 @import '../../scss/global';
 
+// ==============================================
+// Cicle Indicator
+// ==============================================
+
 .indicator {
   width: 100px;
   height: 100px;
@@ -34,5 +38,90 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+// ==============================================
+// Mixins
+// ==============================================
+
+@mixin dot(
+  $width: $dot-width,
+  $height: $dot-height,
+  $radius: $dot-radius,
+  $bg-color: $dot-bg-color,
+  $color: $dot-color
+) {
+  width: $width;
+  height: $height;
+  border-radius: $radius;
+  background-color: $bg-color;
+  color: $color;
+}
+
+// ==============================================
+// Variables
+// ==============================================
+
+$dot-width: 15px !default;
+$dot-height: 15px !default;
+$dot-radius: $dot-width/2 !default;
+
+$dot-color: rgba($color-primary, 0.9) !default;
+$dot-bg-color: $dot-color !default;
+$dot-before-color: $dot-color !default;
+$dot-after-color: $dot-color !default;
+
+$dot-spacing: $dot-width * 2.5 !default;
+
+/**
+ * ==============================================
+ * Dot Flashing
+ * ==============================================
+ */
+
+.dot-flashing {
+  position: relative;
+  z-index: 1;
+  @include dot;
+
+  animation: dot-flashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+  }
+
+  &::before {
+    left: -$dot-spacing;
+
+    @include dot($bg-color: $dot-before-color);
+
+    animation: dot-flashing 1s infinite alternate;
+    animation-delay: 0s;
+  }
+
+  &::after {
+    left: $dot-spacing;
+
+    @include dot($bg-color: $dot-after-color);
+
+    animation: dot-flashing 1s infinite alternate;
+    animation-delay: 1s;
+  }
+}
+
+@keyframes dot-flashing {
+  0% {
+    background-color: $dot-color;
+  }
+
+  50%,
+  100% {
+    background-color: rgba(lighten($dot-color, 20%), 0.5);
   }
 }

@@ -12,6 +12,9 @@
     align-items: center;
     height: 300px;
     background-color: #dfdfdf;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: contain; */
     &__wrapper {
       margin: 0 50px;
       display: block;
