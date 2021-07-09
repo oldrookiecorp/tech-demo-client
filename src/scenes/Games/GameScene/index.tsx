@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useMemo, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import styles from './GameScene.module.scss';
 import cb from 'classnames/bind';
@@ -118,17 +118,19 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     <>
       {data && (
         <iframe
+          data-type="text/html"
           src={`${data.aframeUrl}?gameId=${game_id}&user=${nickname}`}
           className={cn('ifram__container')}
           onLoad={aframeLoad}
           allowFullScreen
-          mozallowfullscreen="true"
-          webkitallowfullscreen="true"
-          frameborder="0"
-          allowvr="yes"
+          // mozAllowFullscreen="true"
+          // webkitallowfullscreen="true"
+          // allowvr="yes"
           allow="vr; xr; accelerometer; magnetometer; gyroscope; webvr;webxr;"
         />
       )}
+
+      <iframe id="ytplayer" data-type="text/html" frameBorder="0" />
 
       {loading ? (
         <Indicator className={cn('indicator--center')} />
