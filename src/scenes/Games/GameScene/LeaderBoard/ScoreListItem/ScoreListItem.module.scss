@@ -15,7 +15,9 @@
     td,
     th {
       padding: 10px;
-      overflow: hidden;
+      // overflow: hidden;
+      display: flex;
+      align-items: center;
     }
   }
   &--one {
@@ -27,6 +29,11 @@
     margin-bottom: 10px;
     text-shadow: 0px 1px 3px #896700;
     border-top: 2px solid #f4ba08;
+    &--my {
+      background-color: #84dce7;
+      text-shadow: 0px 1px 3px #006e7b;
+      border-top: 2px solid #8cc6cd;
+    }
     td,
     th {
       padding: 15px 10px;

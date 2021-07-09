@@ -16,6 +16,7 @@ exports[`[Component] Board 스냅샷 테스트 1`] = `
     </div>
     <div
       class="wrapper"
+      id="boardScrollContainer"
     >
       <p>
         BOARD COMPONENT

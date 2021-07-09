@@ -36,9 +36,13 @@
     border-radius: 20px;
     height: 100%;
     width: 100%;
-
     padding-top: 50px;
     padding-bottom: 30px;
     overflow: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera*/
+    }
   }
 }

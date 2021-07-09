@@ -7,3 +7,11 @@ exports[`[Component] Button 스냅샷 테스트 : default 1`] = `
   />
 </div>
 `;
+
+exports[`[Component] Button 프로퍼티 테스트 : className 1`] = `
+<div>
+  <button
+    class="container theme--pink shape--undefined BTN_CLASS_NAME"
+  />
+</div>
+`;
