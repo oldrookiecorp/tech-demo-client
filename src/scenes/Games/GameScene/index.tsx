@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable no-alert */
 import React, { HTMLAttributes, useEffect, useMemo, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
