@@ -130,10 +130,9 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
           // src={`https://192.168.219.180:8888?gameId=${game_id}&user=${nickname}`}
           className={cn('ifram__container')}
           onLoad={aframeLoad}
-          scrolling="no"
           allowFullScreen
-          allowvr="yes"
-          allow="vr; xr; accelerometer; magnetometer; gyroscope; webvr;webxr;"
+          allowvr
+          allow="vr; xr; accelerometer; magnetometer; gyroscope; webvr; webxr;"
         />
       )}
 
