@@ -126,8 +126,8 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     <>
       {data && (
         <iframe
-          // src={`${data.aframeUrl}?gameId=${game_id}&user=${nickname}`}
-          src={`https://192.168.219.180:8888?gameId=${game_id}&user=${nickname}`}
+          src={`${data.aframeUrl}?gameId=${game_id}&user=${nickname}`}
+          // src={`https://192.168.219.180:8888?gameId=${game_id}&user=${nickname}`}
           className={cn('ifram__container')}
           onLoad={aframeLoad}
           scrolling="no"
