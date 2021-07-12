@@ -19,7 +19,7 @@ ReactDOM.render(
       </Switch>
     </Router>
     <Footer />
-    {/* <div id="tsparticles" /> */}
+    <div id="tsparticles" />
   </React.StrictMode>,
   document.getElementById('root')
 );
