@@ -131,8 +131,6 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
           onLoad={aframeLoad}
           scrolling="no"
           allowFullScreen
-          mozAllowFullscreen="true"
-          webkitallowfullscreen="true"
           allowvr="yes"
           allow="vr; xr; accelerometer; magnetometer; gyroscope; webvr;webxr;"
         />
