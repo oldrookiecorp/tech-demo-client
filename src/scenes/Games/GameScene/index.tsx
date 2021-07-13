@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable no-alert */
 import React, { HTMLAttributes, useEffect, useMemo, useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
@@ -21,6 +22,17 @@ const cn = cb.bind(styles);
 export interface GameIdMatchParams {
   game_id: string;
 }
+
+// declare global {
+//   interface HTMLIFrameElement {
+//     allowvr?: string;
+//   }
+// }
+declare var HTMLIFrameElement: {
+  // prototype: HTMLIFrameElement;
+  allowvr: string;
+  // new (): HTMLIFrameElement;
+};
 
 const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
   const { game_id } = match.params;
@@ -110,23 +122,17 @@ const GameScene = ({ match }: RouteComponentProps<GameIdMatchParams>) => {
     };
   });
 
-  useEffect(() => {
-    console.log('rankData : ', rankData);
-  }, [rankData]);
-
   return (
     <>
       {data && (
         <iframe
-          data-type="text/html"
           src={`${data.aframeUrl}?gameId=${game_id}&user=${nickname}`}
+          // src={`https://192.168.219.180:8888?gameId=${game_id}&user=${nickname}`}
           className={cn('ifram__container')}
           onLoad={aframeLoad}
           allowFullScreen
-          data-mozAllowFullscreen="true"
-          data-webkitallowfullscreen="true"
-          data-allowvr="yes"
-          allow="vr; xr; accelerometer; magnetometer; gyroscope; webvr;webxr;"
+          allowvr
+          allow="vr; xr; accelerometer; magnetometer; gyroscope; webvr; webxr;"
         />
       )}
 
