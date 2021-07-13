@@ -5,6 +5,10 @@ pipeline {
     HOME = '.'
   }
 
+  options {
+    disableConcurrentBuilds()
+  }
+
   stages {
     stage("Prepare") {
 
